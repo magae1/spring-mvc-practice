@@ -23,6 +23,9 @@ public class BoardController {
         model.addAttribute("bList", boardService.getAllBoards());
     }
 
+    @GetMapping("/write")
+    public void write(Model model) {}
+
     @PostMapping("/write")
     public String register(Board board, RedirectAttributes rattr) {
         log.info("Board register");
@@ -31,7 +34,7 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-    @GetMapping("/read")
+    @GetMapping({"/read", "/modify"})
     public void read(@RequestParam("bno") Integer bno, Model model) {
         System.out.println("Board read: " + bno);
         model.addAttribute("board", boardService.read(bno));
