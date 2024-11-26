@@ -85,7 +85,7 @@
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.15</version>
+      <version>1.2.17</version>
       <exclusions>
         <exclusion>
           <groupId>javax.mail</groupId>
@@ -123,10 +123,11 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.18.1</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
+      <version>5.11.3</version>
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/junit/junit -->

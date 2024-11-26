@@ -5,6 +5,8 @@ import javax.sql.DataSource;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +23,31 @@ public class JDBCTests {
     @Setter(onMethod_= {@Autowired})
     private DataSource ds;
 
+    @Setter(onMethod_= {@Autowired})
+    private SqlSessionFactory sqlSessionFactory;
+
     @Test
     public void testConnection() {
         try(Connection conn = ds.getConnection()){
 //            log.info(conn);
-              System.out.println(conn);
+            System.out.println(conn);
         }
-        catch(Exception e) {fail(e.getMessage());}
+        catch(Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testMyBatis() {
+        try(SqlSession session = sqlSessionFactory.openSession();
+            Connection conn = session.getConnection()){
+//            log.info(session);
+            System.out.println(session);
+//            log.info(conn);
+            System.out.println(conn);
+        }
+        catch(Exception e) {
+            fail(e.getMessage());
+        }
     }
 }
